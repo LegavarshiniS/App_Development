@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer style={styles.footer}>
       <div style={styles.container}>
-        <p style={styles.text}>© 2024 Your Company. All Rights Reserved.</p>
+        <p style={styles.text}>© 2024 dreamland. All Rights Reserved.</p>
         <p style={styles.text}>Follow us on:</p>
         <div style={styles.socialIcons}>
           <a href="https://facebook.com" style={styles.icon} aria-label="Facebook">

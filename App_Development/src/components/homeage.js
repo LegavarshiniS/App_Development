@@ -28,7 +28,7 @@ const ShopByAge = () => {
 
           .card {
             width: 200px;
-            border: 1px solid #ccc;
+            border: 1px solid red;
             border-radius: 8px;
             overflow: hidden;
             text-align: center;
@@ -45,7 +45,7 @@ const ShopByAge = () => {
 
           .card-content {
             padding: 10px;
-            color: white;
+            color: red;
           }
 
           .card:hover {

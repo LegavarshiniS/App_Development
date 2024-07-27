@@ -1,11 +1,11 @@
 import './App.css';
 import Home from './components/home';
 import Login from './components/login';
-import Header from './components/header';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
-import Slideshow from './components/slide';
-import ShopByAge from './components/homeage';
 import Register from './components/register';
+import CartPage from './components/cart';
+import WishPage from './components/wish';
+import UserPanel from './components/dashboard';
 
 function App() {
   return (
@@ -14,10 +14,13 @@ function App() {
         <Router>
         <Routes>
 
-          <Route exact path="/" element={<Home />}/> 
+         <Route exact path="/" element={<Home />}/> 
          <Route exact path="/login" element={<Login/>}/>
          <Route exact path="/register" element={<Register/>}/>
-        
+         <Route exact path="/cart" element={<CartPage/>}/>
+         <Route exact path="/wish" element={<WishPage/>}/>
+         <Route exact path="/dashboard" element={<UserPanel/>}/>
+
         </Routes>
        
       </Router>  

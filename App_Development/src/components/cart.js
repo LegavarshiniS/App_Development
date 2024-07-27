@@ -1,8 +1,9 @@
-import React from 'react';
-import SearchBar from './search';
-import logo from '../assets/images/logo.png';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import logo from '../assets/images/logo.png';
+import SearchBar from './search';
+import Footer from './footer';
+import './cart.css';
 const Header = () => {
   return (
     <>
@@ -60,6 +61,7 @@ const Header = () => {
           .header-cart-icon i {
             font-size: 42px;
             margin-top: 6px;
+            color: black;
           }
 
           .header-account-icon {
@@ -135,6 +137,29 @@ const Header = () => {
               font-size: 12px;
             }
           }
+
+          .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+          }
+
+          .content-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            margin-bottom:200px;
+          }
+
+          .cart-title {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0;
+            font-weight: bold;
+          }
         `}
       </style>
       <header className="header">
@@ -161,15 +186,56 @@ const Header = () => {
               </div>
             </li>
             <li className="header-cart-icon">
-              <a href="/cart">
+              <Link to="/cart">
                 <i className="fa-solid fa-cart-shopping"></i>
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
       </header>
     </>
   );
-}
+};
 
-export default Header;
+const CartPage = () => {
+  const [hover, setHover] = useState(false);
+
+  const buttonStyle = {
+    backgroundColor: hover ? 'red' : 'white',
+    color: hover ? 'white' : 'black',
+    border: 'solid',
+    padding: '10px 20px',
+    // borderRadius: '5px',
+    cursor: 'pointer',
+    fontSize: '16px',
+  };
+
+  return (
+    <div className="page-container">
+      <Header />
+      <div className="cart-title">Your Cart</div>
+      <div className="content-wrap">
+        <h2 style={styles.heading}>Your Cart is Empty!</h2>
+        <button
+          style={buttonStyle}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          onClick={() => window.location.href = '/shop'}
+        >
+          Continue Shopping
+        </button>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+const styles = {
+  heading: {
+    fontSize: '17px',
+    marginBottom: '20px',
+    
+  },
+};
+
+export default CartPage;

@@ -1,15 +1,19 @@
 import { useState } from "react";
-import React from "react";
-import login from '../assets/images/login.png'; // Ensure this path is correct
-
-const Login = () => {
+import login from '../assets/images/login.png'; 
+import { Link } from "react-router-dom";
+const Register = () => {
     const [formData, setFormData] = useState({
+        name: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     });
+
     const [error, setError] = useState({
+        name: "",
         email: "",
         password: "",
+        confirmPassword: ""
     });
 
     const handleChange = (event) => {
@@ -21,12 +25,22 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const formErrors = {};
+
+        if (formData.name.trim() === "") {
+            formErrors.name = "Enter Name";
+        }
         if (formData.email.trim() === "") {
             formErrors.email = "Enter Email";
         }
         if (formData.password.trim() === "") {
             formErrors.password = "Enter Password";
         }
+        if (formData.confirmPassword.trim() === "") {
+            formErrors.confirmPassword = "Confirm Password";
+        } else if (formData.password !== formData.confirmPassword) {
+            formErrors.confirmPassword = "Passwords do not match";
+        }
+
         setError(formErrors);
         console.log(formData);
     };
@@ -39,22 +53,22 @@ const Login = () => {
             height: '100vh',
             overflow: 'hidden',
             display: "flex",
-            justifyContent: "flex-start", // Align container to the left
+            justifyContent: "center",
             alignItems: "center",
             backgroundImage: `url(${login})`,
             backgroundSize: "cover",
             backgroundPosition: "center"
         },
         container: {
-            //maxWidth: "400px",
-            width:"300px",
-            marginLeft: "930px", 
+            width:"310px",
+            marginLeft:"600px",
+            padding: "40px",
             paddingTop:"5px",
-            padding: "50px",
-            border: "1px solid #ddd",
+            paddingRight:"80px",
+            border: "1px solid #F04721",
             borderRadius: "8px",
-            backgroundColor: "white",
-            position: 'relative',
+            backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent background for better readability
+            position: "relative",
             zIndex: 1
         },
         header: {
@@ -72,10 +86,6 @@ const Login = () => {
             marginBottom: "10px",
             border: "1px solid #ddd",
             borderRadius: "4px"
-        },
-        inputFocus: {
-            borderColor: "#007bff",
-            outline: "none"
         },
         error: {
             color: "red",
@@ -107,9 +117,19 @@ const Login = () => {
     return (
         <div style={styles.pageContainer}>
             <div style={styles.container}>
-                <h1 style={styles.header}>Login</h1>
+                <h1 style={styles.header}>Register</h1>
                 <form onSubmit={handleSubmit}>
-                    <label style={styles.label}>UserName</label>
+                    <label style={styles.label}>Name</label>
+                    <input
+                        type="text"
+                        placeholder="Enter Name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        style={styles.input}
+                    />
+                    {error.name && <p style={styles.error}>{error.name}</p>}
+                    <label style={styles.label}>Email</label>
                     <input
                         type="email"
                         placeholder="Enter Email"
@@ -129,13 +149,22 @@ const Login = () => {
                         style={styles.input}
                     />
                     {error.password && <p style={styles.error}>{error.password}</p>}
-                    <button type="submit" style={styles.button}>Login</button>
+                    <label style={styles.label}>Confirm Password</label>
+                    <input
+                        type="password"
+                        placeholder="Confirm Password"
+                        name="confirmPassword"
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                        style={styles.input}
+                    />
+                    {error.confirmPassword && <p style={styles.error}>{error.confirmPassword}</p>}
+                    <button type="submit" style={styles.button}>Register</button>
                 </form>
-                <a href="#" style={styles.link}>Forgot Password?</a>
-                <a href="#" style={styles.link}>Don't have an account? Sign Up</a>
+                <Link to="/login" style={styles.link}>Already have an account? Sign in</Link>
             </div>
         </div>
     );
 }
 
-export default Login;
+export default Register;
