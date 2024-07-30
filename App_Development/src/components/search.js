@@ -23,6 +23,8 @@ const SearchBar = () => {
             align-items: center;
             justify-content: center;
             margin: 20px;
+            margin-left:260px;
+            margin-top:20px;
           }
 
           .search-input {

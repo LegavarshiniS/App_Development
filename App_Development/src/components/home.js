@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./header";
 import Slideshow from "./slide";
 import ShopByAge from "./homeage";
-import NavBar from "./navbar";
+import NavBar from "./navbar1";
 import ImageComponent from "./ad";
 import CenteredTextWithLines from "./title";
 import ImageGallery from "./books";

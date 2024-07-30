@@ -1,5 +1,5 @@
 import { useState } from "react";
-import login from '../assets/images/login.png'; 
+import car from '../assets/images/car.jpg'; 
 import { Link } from "react-router-dom";
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -55,21 +55,22 @@ const Register = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            backgroundImage: `url(${login})`,
+            backgroundImage: `url(${car})`,
             backgroundSize: "cover",
             backgroundPosition: "center"
         },
         container: {
-            width:"310px",
+            width:"390px",
             marginLeft:"600px",
             padding: "40px",
             paddingTop:"5px",
             paddingRight:"80px",
             border: "1px solid #F04721",
             borderRadius: "8px",
-            backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent background for better readability
+            backgroundColor: "rgba(255, 255, 255, 0.8)", 
             position: "relative",
-            zIndex: 1
+            zIndex: 1,
+            boxShadow: "-2px 0 10px red",
         },
         header: {
             textAlign: "center",
@@ -81,7 +82,7 @@ const Register = () => {
             marginBottom: "8px"
         },
         input: {
-            width: "100%",
+            width: "300px",
             padding: "10px",
             marginBottom: "10px",
             border: "1px solid #ddd",
@@ -93,11 +94,11 @@ const Register = () => {
             margin: "0"
         },
         button: {
-            width: "100%",
+            width: "300px",
             padding: "10px",
             border: "none",
             borderRadius: "4px",
-            backgroundColor: "#007bff",
+            backgroundColor: "#F04721",
             color: "white",
             fontSize: "1rem",
             cursor: "pointer"

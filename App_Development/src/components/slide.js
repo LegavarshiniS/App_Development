@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Slideshow = () => {
   const images = [
@@ -18,6 +19,7 @@ const Slideshow = () => {
   }, [images.length]);
 
   return (
+    <Link to="/navcategory">
     <div className="slideshow-container">
       <style>
         {`
@@ -111,6 +113,7 @@ const Slideshow = () => {
         ))}
       </div>
     </div>
+    </Link>
   );
 };
 

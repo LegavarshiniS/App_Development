@@ -5,7 +5,7 @@ const ImageComponent = () => {
   const navigate = useNavigate(); // Initialize navigate function
 
   const handleClick = () => {
-    navigate('/nextpage'); // Navigate to the target page
+    navigate('/navCategory'); // Navigate to the target page
   };
 
   const imageStyle = {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Image = () => {
   const [hoveredImage, setHoveredImage] = useState(null);
@@ -44,13 +45,15 @@ const Image = () => {
 
   return (
     <div style={containerStyle}>
-      <img
-        src="https://www.toymarche.com/s/5f447e14285691dcc9bfcdf2/63fb313795942044b3eb760e/11-480x480.png"
+     <Link to="/marvel">
+      <img      src="https://yt3.googleusercontent.com/ugAmG9LeliJJoiyacIecdiq_ZgRNdmjCIohaN5x3QEOmWB9dNUsKuCU8ngLs3JUauHZ4-boVkA=s900-c-k-c0x00ffffff-no-rj"
         alt="Placeholder 1"
         style={imageStyle}
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
       />
+      </Link>
+  <Link to="/barbie">
       <img
         src="https://www.toymarche.com/s/5f447e14285691dcc9bfcdf2/63fa428eb7d932111226d634/category-thumbnails-2--480x480.png"
         alt="Placeholder 2"
@@ -58,6 +61,8 @@ const Image = () => {
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
       />
+      </Link>
+      <Link to="others">
       <img
         src="https://www.toymarche.com/s/5f447e14285691dcc9bfcdf2/63fb308ca8604c8ae06c0f51/2-480x480.png"
         alt="Placeholder 3"
@@ -101,6 +106,7 @@ src="https://static.brandirectory.com/logos/nerf001_nerf.png"
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
       />
+      </Link>
       {/* Add more images as needed */}
     </div>
   );

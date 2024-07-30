@@ -21,6 +21,11 @@ const Header = () => {
             color: white;
           }
 
+          .header-logo {
+            display: flex;
+            align-items: center;
+          }
+
           .header-logo img {
             height: 59px;
           }
@@ -28,8 +33,14 @@ const Header = () => {
           .header-logo h1 {
             display: inline;
             margin-left: 10px;
-            margin-top: 4px;
+            margin-top: 20px;
             font-size: 40px;
+          }
+
+          .header-nav {
+            display: flex;
+            align-items: center;
+            margin-left: auto; /* Ensure nav is aligned to the right */
           }
 
           .header-nav ul {
@@ -37,13 +48,13 @@ const Header = () => {
             list-style: none;
             padding: 0;
             margin: 0;
+            gap: 15px; /* Add space between items */
           }
 
           .header-nav li {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0 15px;
           }
 
           .header-nav a {
@@ -55,6 +66,10 @@ const Header = () => {
           .header-wishlist-icon i {
             font-size: 34px;
             margin-bottom: 5px;
+          }
+
+          .header-cart-icon {
+            margin-left: auto; /* Push cart icon to the right */
           }
 
           .header-cart-icon i {
@@ -146,10 +161,10 @@ const Header = () => {
         <nav className="header-nav">
           <ul>
             <li className="header-wishlist-icon">
-              <a href="/wish">
+              <Link to="/wish">
                 <i className="fa-regular fa-heart"></i>
-              </a>
-              <a href="/wish">Wish Lists</a>
+              </Link>
+              <Link to="/wish">Wish Lists</Link>
             </li>
             <li className="header-account-icon">
               <Link to="/login">

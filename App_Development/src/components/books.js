@@ -56,22 +56,22 @@ const ImageGallery = () => {
         <img
           src="https://www.funcorp.in/cdn/shop/files/Early_Learning_Books_1200x1200_compress_1170x.jpg?v=1674654852"
           alt="Image 1"
-          onClick={() => handleClick('/page1')}
+          onClick={() => handleClick('/early')}
         />
         <img
           src="https://www.funcorp.in/cdn/shop/files/Story_Books_1200x1200_compress_1170x.jpg?v=1674654852"
           alt="Image 2"
-          onClick={() => handleClick('/page2')}
+          onClick={() => handleClick('/story')}
         />
         <img
           src="https://www.funcorp.in/cdn/shop/files/Interactive_Activity_Books_1200x1200_compress_1170x.jpg?v=1674654852"
           alt="Image 3"
-          onClick={() => handleClick('/page3')}
+          onClick={() => handleClick('/activity')}
         />
         <img
           src="https://www.funcorp.in/cdn/shop/files/Picture_Books_1200x1200_compress_1170x.jpg?v=1674654852"
           alt="Image 4"
-          onClick={() => handleClick('/page4')}
+          onClick={() => handleClick('/picture')}
         />
       </div>
 
@@ -79,6 +79,7 @@ const ImageGallery = () => {
         <img
           src="https://www.funcorp.in/cdn/shop/files/Drawing_Painting_Colouring_Books_1200x1200_compress_1170x.jpg?v=1674654852"
           alt="Right Image"
+          onClick={() => handleClick('/draw')}
         />
       </div>
     </div>

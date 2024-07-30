@@ -65,25 +65,25 @@ const ShopByAge = () => {
       <div className="shop-by-age-title"></div>
       <div className="card-container">
         <div className="card">
-          <Link to="/age-0-2">
+          <Link to="/three">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv9SC2Jwr-YTxgYScH_tbqt5WlfyGeqVddCg&s" alt="0-2 Years" />
             <div className="card-content">0-2 Years</div>
           </Link>
         </div>
         <div className="card">
-          <Link to="/age-3-5">
+          <Link to="/eight">
             <img src="https://www.pngitem.com/pimgs/m/467-4674159_little-girl03-cartoon-early-child-things-hd-png.png" alt="3-5 Years" />
             <div className="card-content">3-5 Years</div>
           </Link>
         </div>
         <div className="card">
-          <Link to="/age-6-8">
+          <Link to="/eight">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZqDhq6d2l4KhXLGWU5jpigm-VecZeA97cCQ&s" alt="6-8 Years" />
             <div className="card-content">6-8 Years</div>
           </Link>
         </div>
         <div className="card">
-          <Link to="/age-9-12">
+          <Link to="/all">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCRipwb7WNoGOSaUYwyXmMQf5ayyzhSrcCUA&s" alt="9-12 Years" />
             <div className="card-content">9+ Years</div>
           </Link>
