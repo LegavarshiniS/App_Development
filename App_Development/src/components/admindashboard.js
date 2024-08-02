@@ -1,10 +1,45 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import { Line, Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, ArcElement, Tooltip, Legend } from 'chart.js';
 import logo from '../assets/images/logo.png';
 import profile from '../assets/images/profile.jpg'; // Ensure the correct path to your profile photo
 
-const ProfileWish = () => {
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  ArcElement,
+  Tooltip,
+  Legend
+);
+
+const lineChartData = {
+  labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+  datasets: [
+    {
+      label: 'Items Sold Out',
+      data: [8, 15, 12, 20, 18, 25], // Example data points representing number of items sold out
+      fill: false,
+      borderColor: 'blue',
+      tension: 0.1
+    }
+  ]
+};
+
+const pieChartData = {
+  labels: ['Toys', 'Barbie', 'Games', 'Books'],
+  datasets: [
+    {
+      data: [100, 50, 75, 25], // Example data points representing spend in each category
+      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+    }
+  ]
+};
+
+const AdminDashBoard = () => {
   return (
     <>
       <link
@@ -96,33 +131,33 @@ const ProfileWish = () => {
             flex-direction: column;
             align-items: center;
             padding: 20px;
-            background-color: white; 
-            color: white; 
+            background-color: white;
+            color: white;
             height: 100vh;
-            width: 300px; 
+            width: 300px;
             box-shadow: -2px 0 10px red;
           }
 
           .profile-photo-container {
-            width: 140px; /* Adjust size as needed */
-            height: 140px; /* Adjust size as needed */
+            width: 140px;
+            height: 140px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 50%; /* Makes the container circular */
-            margin-top: 18px; /* Increased space from the top */
-            margin-bottom: 40px; /* Increased space below the icon */
-            overflow: hidden; /* Ensures the photo fits within the circle */
+            border-radius: 50%;
+            margin-top: 18px;
+            margin-bottom: 40px;
+            overflow: hidden;
           }
 
           .profile-photo {
-            width: 100%; /* Ensures the photo covers the container */
-            height: auto; /* Maintains the aspect ratio */
+            width: 100%;
+            height: auto;
           }
 
-          .sidebar-link {
+          .sidebar-link, .side-link {
             position: relative;
-            margin-bottom: 20px; /* Increased margin below each link */
+            margin-bottom: 20px;
             font-size: 18px;
             color: red;
             text-decoration: none;
@@ -131,56 +166,51 @@ const ProfileWish = () => {
             justify-content: center;
             width: 100%;
             padding: 10px;
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+            transition: background-color 0.3s, color 0.3s;
           }
 
-          .side-link {
-           position: relative;
-            margin-bottom: 20px; /* Increased margin below each link */
-            font-size: 18px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 10px;
-            transition: background-color 0.3s, color 0.3s; 
+          .sidebar-link:hover, .side-link:hover {
             background-color: red;
+            color: white;
           }
 
-          .sidebar-link:hover {
-            background-color: red; /* Background color on hover */
-            color: white; /* Text color on hover */
-          }
           .sidebar-link i, .side-link i {
-            font-size: 24px; /* Adjust icon size as needed */
-            margin-right: 10px; /* Space between icon and text */
-            transition: color 0.3s; /* Smooth transition for hover effect */
+            font-size: 24px;
+            margin-right: 10px;
+            transition: color 0.3s;
           }
 
           .sidebar-link:hover i, .side-link:hover i {
-            color: white; /* Icon color on hover */
+            color: white;
           }
 
           .link-text {
-            color: red;
-            transition: color 0.3s; /* Smooth transition for hover effect */
+            transition: color 0.3s;
           }
 
-          .sidebar-link:hover .link-text, .side-link .link-text {
-            color: white; /* Text color on hover */
+          .sidebar-link:hover .link-text, .side-link:hover .link-text {
+            color: white;
+          }
+
+          .side-link {
+            color: white;
+            background-color: red;
+          }
+
+          .side-link i, .side-link .link-text {
+            color: white;
           }
 
           @media (max-width: 768px) {
             .sidebar-container {
               padding: 10px;
-              width: 150px; /* Adjust width for smaller screens */
+              width: 150px;
             }
 
             .profile-photo-container {
               width: 60px;
               height: 60px;
-              margin-top: 60px; /* Increased space from the top for smaller screens */
+              margin-top: 60px;
             }
 
             .sidebar-link i, .side-link i {
@@ -189,19 +219,19 @@ const ProfileWish = () => {
 
             .sidebar-link, .side-link {
               font-size: 16px;
-              margin-bottom: 15px; /* Increased margin below each link */
+              margin-bottom: 15px;
             }
           }
 
           @media (max-width: 480px) {
             .sidebar-container {
-              width: 120px; /* Adjust width for smaller screens */
+              width: 120px;
             }
 
             .profile-photo-container {
               width: 50px;
               height: 50px;
-              margin-top: 40px; /* Increased space from the top for smaller screens */
+              margin-top: 40px;
             }
 
             .profile-photo {
@@ -214,50 +244,65 @@ const ProfileWish = () => {
 
             .sidebar-link, .side-link {
               font-size: 14px;
-              margin-bottom: 12px; /* Increased margin below each link for smaller screens */
+              margin-bottom: 12px;
             }
           }
 
-          .wishlist-container {
+          .dashboard-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
             background-color: white;
             color: #333;
-            max-width: 600px;
+            max-width: 800px;
             margin: 20px auto;
             box-shadow: 0 0 10px red;
             text-align: center;
-            margin-top:200px;
-            margin-left:600px;
+            margin-top: 90px; /* Adjusted margin for better positioning */
+            margin-left: 500px; /* Adjusted margin for better positioning */
           }
 
-          .wishlist-title {
+          .dashboard-title {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 20px;
-            color: white;
           }
 
-          .empty-message {
-            font-size: 18px;
-            color: #888;
+          .chart-container {
+            width: 100%;
+            max-width: 1140px;
+            margin-bottom:1px;
+          }
+
+          .chart-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
             margin-bottom: 20px;
           }
 
-          .continue-shopping-button {
-            background-color: red;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+          .chart-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            flex: 1;
+            height:400px;
           }
 
-          .continue-shopping-button:hover {
-            background-color: white;
-            color:red;
+          .total-orders, .time-spent {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+            flex: 1;
+            height:100px;
+          }
+            
+
+          .chart-row .chart-box {
+          
+            flex: 1;
+            margin-right: 10px;
           }
         `}
       </style>
@@ -276,32 +321,39 @@ const ProfileWish = () => {
         <div className="profile-photo-container">
           <img src={profile} alt="Profile" className="profile-photo" />
         </div>
-        <Link to="/dashboard" className="sidebar-link">
+        <Link to="/adminboard" className="sidebar-link">
           <i className="fas fa-user"></i>
           <span className="link-text">Profile</span>
         </Link>
-        <Link to="/dash" className="sidebar-link">
+        <Link to="/admindashboard" className="side-link">
           <i className="fas fa-tachometer-alt"></i>
           <span className="link-text">Dashboard</span>
         </Link>
-        <Link to="/profilewish" className="side-link">
-          <i className="fas fa-heart" style={{ color: 'white' }}></i>
-          <span className="link-text">Wishlist</span>
+        <Link to="/adminadd" className="sidebar-link">
+          <i className="fa-regular fa-eye"></i>
+          <span className="link-text">View Items</span>
         </Link>
-        <Link to="/orders" className="sidebar-link">
-          <i className="fas fa-box"></i>
-          <span className="link-text">Orders</span>
+        <Link to="/feedback" className="sidebar-link">
+          <i className="fa-solid fa-comment"></i>
+          <span className="link-text">Feedback</span>
         </Link>
       </div>
-      <div className="wishlist-container">
-        <div className="wishlist-title"style={{color:'black'}}>Your WishList</div>
-        <div className="empty-message">Your wishlist is empty!</div>
-        <button className="continue-shopping-button" onClick={() => console.log('Continue shopping')}>
-          Continue Shopping
-        </button>
+      <div className="dashboard-container">
+        <div className="dashboard-title">Your Dashboard</div>
+        <div className="chart-container">
+          <div className="chart-row">
+            <div className="chart-box">
+              <h3>Items Sold Out</h3>
+              <Line data={lineChartData} />
+            </div>
+          </div>
+
+            
+        </div>
       </div>
     </>
   );
-}
+};
 
-export default ProfileWish;
+export default AdminDashBoard;
+

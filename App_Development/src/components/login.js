@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import car from '../assets/images/car.jpg';
 import logo from '../assets/images/logo.png';
 
@@ -13,6 +13,8 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -37,8 +39,13 @@ const Login = () => {
     setError(formErrors);
 
     if (!hasErrors) {
-      console.log(formData);
-      // Handle successful form submission here
+      if (formData.email === "user@gmail.com" && formData.password === "123") {
+        navigate('/dashboard');
+      } else if (formData.email === "lega@gmail.com" && formData.password === "5551") {
+        navigate('/adminboard');
+      } else {
+        setError({ email: "Invalid email or password" });
+      }
     }
   };
 
@@ -138,12 +145,7 @@ const Login = () => {
             style={styles.input}
           />
           {error.password && <p style={styles.error}>{error.password}</p>}
-          <Link to="/navCategory">
-          <button type="submit" style={styles.button}>
-        
-            Login
-          </button>
-          </Link>
+          <button type="submit" style={styles.button}>Login</button>
         </form>
         <a href="#" style={styles.linkSecondary}>Forgot Password?</a>
         <Link to="/register" style={styles.linkSecondary}>Don't have an account? Sign Up</Link>

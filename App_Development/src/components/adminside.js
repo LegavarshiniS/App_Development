@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import profile from '../assets/images/profile.jpg'; // Ensure the correct path to your profile photo
 
-const SidebarLinks = () => {
+const AdminSide = () => {
   return (
     <div className="sidebar-container">
       <style>
@@ -163,24 +163,24 @@ const SidebarLinks = () => {
       <div className="profile-photo-container">
         <img src={profile} alt="Profile" className="profile-photo" />
       </div>
-      <Link to="/profile" className="side-link">
+      <Link to="/adminboard" className="side-link">
         <i className="fas fa-user"></i>
         <span className="link-text">Profile</span>
       </Link>
-      <Link to="/dash" className="sidebar-link">
+      <Link to="/admindashboard" className="sidebar-link">
         <i className="fas fa-tachometer-alt"></i>
         <span className="link-text">Dashboard</span>
       </Link>
-      <Link to="/profilewish" className="sidebar-link">
-        <i className="fas fa-heart"></i>
-        <span className="link-text">Wishlist</span>
+      <Link to="/adminadd" className="sidebar-link">
+      <i className="fa-regular fa-eye"></i>
+        <span className="link-text">View Items</span>
       </Link>
-      <Link to="/orders" className="sidebar-link">
-        <i className="fas fa-box"></i>
-        <span className="link-text">Orders</span>
+      <Link to="/feedback" className="sidebar-link">
+        <i className="fa-solid fa-comment"></i>
+        <span className="link-text">Feedbacks</span>
       </Link>
     </div>
   );
 }
 
-export default SidebarLinks;
+export default AdminSide;

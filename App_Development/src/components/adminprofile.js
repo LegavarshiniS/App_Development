@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button, Form, Alert } from 'react-bootstrap';
 import profile from '../assets/images/profile.jpg'; // Ensure the correct path to your profile photo
 
-const EditProfile = () => {
+const AdminProfile = () => {
   const [name, setName] = useState('Lega');
   const [email, setEmail] = useState('lega@gmail.com');
   const [password, setPassword] = useState('********');
@@ -13,7 +13,6 @@ const EditProfile = () => {
   const [newPhoto, setNewPhoto] = useState(null);
 
   const handleEditProfile = () => {
-    // Handle edit profile logic here
     console.log('Profile updated:', { name, email, password });
     setShowModal(false);
     setShowAlert(true);
@@ -21,7 +20,6 @@ const EditProfile = () => {
   };
 
   const handleClearChanges = () => {
-    // Logic to clear changes, e.g., reset to initial state or empty fields
     setName('Lega');
     setEmail('lega@gmail.com');
     setPassword('********');
@@ -226,4 +224,4 @@ const EditProfile = () => {
   );
 }
 
-export default EditProfile;
+export default AdminProfile;

@@ -74,7 +74,8 @@ const Register = () => {
         },
         header: {
             textAlign: "center",
-            marginBottom: "20px"
+            marginBottom: "20px",
+            marginLeft:"50px"
         },
         label: {
             display: "block",

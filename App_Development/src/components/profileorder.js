@@ -267,7 +267,7 @@ const ProfileOrder = () => {
           <i className="fas fa-user"></i>
           <span className="link-text">Profile</span>
         </Link>
-        <Link to="/dashboard" className="sidebar-link">
+        <Link to="/dash" className="sidebar-link">
           <i className="fas fa-tachometer-alt"></i>
           <span className="link-text">Dashboard</span>
         </Link>

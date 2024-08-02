@@ -1,9 +1,115 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
+import logo from '../assets/images/logo.png';
 import profile from '../assets/images/profile.jpg'; // Ensure the correct path to your profile photo
+import CardManager from './admincard';
 
-const SidebarLinks = () => {
+// AdminBoard component
+const AdminAdd = () => {
+  return (
+    <>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      />
+      <style>
+        {`
+          .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #F04721;
+            color: white;
+          }
+
+          .header-logo {
+            display: flex;
+            align-items: center;
+          }
+
+          .header-logo img {
+            height: 59px;
+          }
+
+          .header-logo h1 {
+            display: inline;
+            margin-left: 10px;
+            margin-top: 4px;
+            font-size: 30px;
+          }
+
+          .header-links {
+            display: flex;
+            align-items: center;
+          }
+
+          .header-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 20px;
+          }
+
+          .header-links i {
+            font-size: 30px;
+            color: white;
+            margin-left: 20px;
+          }
+
+          @media (max-width: 768px) {
+            .header {
+              flex-direction: column;
+              align-items: flex-start;
+            }
+
+            .header-logo {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+
+            .header-logo h1 {
+              font-size: 60px;
+              margin-top: 30px;
+            }
+
+            .header-links {
+              margin-top: 10px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .header-logo h1 {
+              font-size: 24px;
+            }
+
+            .header-links i {
+              font-size: 30px;
+            }
+          }
+        `}
+      </style>
+      <header className="header">
+        <div className="header-logo">
+          <img src={logo} alt="Logo" />
+          <h1>Admin Board</h1>
+        </div>
+        <div className="header-links">
+          <Link to="/navCategory">
+            <i className="fas fa-home"></i>
+          </Link>
+        </div>
+      </header>
+      <AdminSide />
+      <CardManager />
+    </>
+  );
+}
+
+// AdminSide component
+const AdminSide = () => {
   return (
     <div className="sidebar-container">
       <style>
@@ -163,24 +269,28 @@ const SidebarLinks = () => {
       <div className="profile-photo-container">
         <img src={profile} alt="Profile" className="profile-photo" />
       </div>
-      <Link to="/profile" className="side-link">
+      <Link to="/adminboard" className="sidebar-link">
         <i className="fas fa-user"></i>
         <span className="link-text">Profile</span>
       </Link>
-      <Link to="/dash" className="sidebar-link">
+      <Link to="/admindashboard" className="sidebar-link">
         <i className="fas fa-tachometer-alt"></i>
         <span className="link-text">Dashboard</span>
       </Link>
-      <Link to="/profilewish" className="sidebar-link">
-        <i className="fas fa-heart"></i>
-        <span className="link-text">Wishlist</span>
+      <Link to="/adminadd" className="side-link">
+        <i className="fa-regular fa-eye"></i>
+        <span className="link-text">View Items</span>
       </Link>
-      <Link to="/orders" className="sidebar-link">
-        <i className="fas fa-box"></i>
-        <span className="link-text">Orders</span>
+      <Link to="/feedback" className="sidebar-link">
+        <i className="fa-solid fa-comment"></i>
+        <span className="link-text">Feedbacks</span>
       </Link>
     </div>
   );
 }
 
-export default SidebarLinks;
+
+     <CardManager/>
+
+export default AdminAdd;
+
