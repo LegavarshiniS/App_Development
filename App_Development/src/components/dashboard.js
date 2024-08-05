@@ -95,7 +95,7 @@ const DashBoard = () => {
           <img src={logo} alt="Logo" />
         </div>
         <div className="header-links">
-          <Link to="/navCategory">
+          <Link to="/toy">
             <i className="fas fa-home"></i>
           </Link>
         </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 
-const UserPanel = () => {
+const Panel = () => {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [hoveredItem, setHoveredItem] = useState(null);
 
@@ -97,4 +97,4 @@ const UserPanel = () => {
     );
 };
 
-export default UserPanel;
+export default Panel;

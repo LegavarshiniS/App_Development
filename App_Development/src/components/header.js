@@ -3,7 +3,10 @@ import SearchBar from './search';
 import logo from '../assets/images/logo.png';
 import { Link } from 'react-router-dom';
 
+
 const Header = () => {
+
+
   return (
     <>
       <link
@@ -160,12 +163,7 @@ const Header = () => {
         <SearchBar />
         <nav className="header-nav">
           <ul>
-            <li className="header-wishlist-icon">
-              <Link to="/wish">
-                <i className="fa-regular fa-heart"></i>
-              </Link>
-              <Link to="/wish">Wish Lists</Link>
-            </li>
+            
             <li className="header-account-icon">
               <Link to="/login">
                 <i className="fa-regular fa-user"></i>
@@ -175,11 +173,6 @@ const Header = () => {
                 <Link className="one" to="/register">Signup</Link>
               </div>
             </li>
-            <li className="header-cart-icon">
-              <Link to="/cart">
-                <i className="fa-solid fa-cart-shopping"></i>
-              </Link>
-            </li>
           </ul>
         </nav>
       </header>
@@ -188,3 +181,4 @@ const Header = () => {
 }
 
 export default Header;
+

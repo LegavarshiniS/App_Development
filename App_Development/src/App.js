@@ -4,9 +4,7 @@ import Login from './components/login';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import Register from './components/register';
 import CartPage from './components/cart';
-import WishPage from './components/wish';
 import DashBoard from './components/dashboard';
-import Profilewish from './components/profilewish';
 import ProfileOrder from './components/profileorder';
 import NavCategory from './components/navCategory';
 import NavCategory2 from './components/navcategory2';
@@ -35,6 +33,10 @@ import ProfileBoard from './components/prodashboard';
 import ShopkeeperReviews from './components/feedback';
 import ShopkeeperDashboard from './components/feedback';
 import AdminDashBoard from './components/admindashboard';
+import Panel from './components/panel';
+import Header2 from './components/header2';
+import ProfileWish from './components/wishlist';
+import AddressPage from './components/address';
 
 
 
@@ -44,16 +46,17 @@ function App() {
     <div className="App">
         <Router>
         <Routes>
-
+        <Route exact path="/header2" element={<Header2/>}/>
          <Route exact path="/" element={<Home />}/> 
          <Route exact path="/login" element={<Login/>}/>
          <Route exact path="/register" element={<Register/>}/>
          <Route exact path="/cart" element={<CartPage/>}/>
-         <Route exact path="/wish" element={<WishPage/>}/>
+         <Route exact path="/profilewish" element={<ProfileWish/>}/>
+        
+        
          <Route exact path="/dashboard" element={<DashBoard/>}/>
          <Route exact path="/dash" element={<ProfileBoard/>}/>
          
-         <Route exact path="/profilewish" element={<Profilewish/>}/>
          <Route exact path="/orders"element={<ProfileOrder/>}/>
     
          <Route exact path="/contact"element={<ContactPage/>}/>
@@ -63,14 +66,16 @@ function App() {
          <Route exact path="/navCategory2" element={<NavCategory2/>}/>
          <Route exact path="/navCategory3" element={<NavCategory3/>}/>
          <Route exact path="/game" element={<GamePage/>}/>
+         
          <Route exact path="/toy" element={<ToyPage/>}/>
          <Route exact path="/edu" element={<EduPage/>}/>
+         
 
          <Route exact path="/barbie" element={<BarbiePage/>}/>
          <Route exact path="/marvel" element={<MarvelPage/>}/>
          <Route exact path="/others" element={<OtherPage/>}/>
 
-         <Route exact path="/three" element={<ThreePage/>}/>
+         <Route exact path="/three"element={<ThreePage/>}/>
          <Route exact path="/eight" element={<EightPage/>}/>
          <Route exact path="/all" element={<AllPage/>}/>
          <Route exact path="/early" element={<EarlyPage/>}/>
@@ -80,6 +85,7 @@ function App() {
          <Route exact path="/draw" element={<DrawPage/>}/>
          <Route exact path="/payment" element={<PaymentPage/>}/>
          <Route exact path="/pay" element={<PaymentSuccessful/>}/>
+         <Route exact path="/address" element={<AddressPage/>}/>
 
          <Route exact path="/adminboard" element={<AdminBoard/>}/>
          <Route exact path="/adminadd" element={<AdminAdd/>}/>

@@ -40,7 +40,7 @@ const Login = () => {
 
     if (!hasErrors) {
       if (formData.email === "user@gmail.com" && formData.password === "123") {
-        navigate('/dashboard');
+        navigate('/toy');
       } else if (formData.email === "lega@gmail.com" && formData.password === "5551") {
         navigate('/adminboard');
       } else {

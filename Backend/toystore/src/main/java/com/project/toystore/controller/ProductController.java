@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import com.project.toystore.model.Product;
 import com.project.toystore.services.ProductService;
 
-
-
 @RestController
 @RequestMapping("/products")
 public class ProductController {

@@ -7,6 +7,6 @@ import com.project.toystore.model.Product;
 import java.util.List;
 
 public interface ProductRepo extends JpaRepository<Product, Integer> {
-    // Custom query method to find products by category
+    
     List<Product> findByCategory(String category);
 }

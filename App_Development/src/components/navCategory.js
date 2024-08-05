@@ -35,9 +35,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './navCategory.css';
 import logo from '../assets/images/logo.png'; 
-import UserPanel from './userpanel';
 import ProductPage from './productpage';
 import NavBar from './navbar1';
+// import UserPanel from './userpanel';
 
 const NavCategory = () => {
   return (
@@ -47,7 +47,7 @@ const NavCategory = () => {
           <img src={logo} alt="Logo" className="navbar-logoo" />
         </div>
         <div className="navbar-rightt">
-          <UserPanel />
+          {/* <UserPanel/> */}
         </div>
       </div>
       <div className="navbar-beloww">

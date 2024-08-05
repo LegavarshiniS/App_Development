@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 import SearchBar from './search';
-import Footer from './footer';
 
-// Combined Header Component
-const Header = () => {
+const Header2 = () => {
+  const location = useLocation();
+  const isCartPage = location.pathname === '/cart';
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
   return (
     <>
       <link
@@ -18,9 +24,14 @@ const Header = () => {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 12px;
             background-color: #F04721;
             color: white;
+          }
+
+          .header-logo {
+            display: flex;
+            align-items: center;
           }
 
           .header-logo img {
@@ -30,8 +41,53 @@ const Header = () => {
           .header-logo h1 {
             display: inline;
             margin-left: 10px;
-            margin-top: 4px;
+            margin-top: 20px;
             font-size: 40px;
+          }
+
+          .header-account-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin-left: 10px; /* Space between DREAMLAND text and icon */
+          }
+
+          .header-account-icon i {
+            font-size: 34px;
+            cursor: pointer;
+            color: white; /* Ensure icon color is white */
+            margin-left:1070px;
+          }
+
+          .header-account-dropdown {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: white;
+            color: black;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            display: ${dropdownVisible ? 'block' : 'none'};
+            z-index: 1;
+          }
+
+          .header-account-dropdown a {
+            display: block;
+            padding: 8px 16px;
+            color: red;
+            text-decoration: none;
+          }
+
+          .header-account-dropdown a:hover {
+            background-color: #f1f1f1;
+          }
+
+          .header-nav {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
           }
 
           .header-nav ul {
@@ -39,13 +95,13 @@ const Header = () => {
             list-style: none;
             padding: 0;
             margin: 0;
+            gap: 15px;
           }
 
           .header-nav li {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0 15px;
           }
 
           .header-nav a {
@@ -54,40 +110,18 @@ const Header = () => {
             text-align: center;
           }
 
-          .header-wishlist-icon a.wishlist-link {
-            color: black;
-          }
-
           .header-wishlist-icon i {
             font-size: 34px;
             margin-bottom: 5px;
-            color: black;
+          }
+
+          .header-cart-icon {
+            margin-left: auto;
           }
 
           .header-cart-icon i {
             font-size: 42px;
             margin-top: 6px;
-          }
-
-          .header-account-icon {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-
-          .header-account-icon i {
-            font-size: 34px;
-          }
-
-          .header-account-links {
-            display: flex;
-          }
-
-          .header-account-links a {
-            color: white;
-            text-decoration: none;
-            margin-top: 5px;
-            padding: 0 2px;
           }
 
           @media (max-width: 768px) {
@@ -148,75 +182,21 @@ const Header = () => {
         <div className="header-logo">
           <img src={logo} alt="Logo" />
           <h1>DREAMLAND</h1>
-        </div>
-        <SearchBar />
-        <nav className="header-nav">
-          <ul>
-            <li className="header-wishlist-icon">
-              <Link to="/wish">
-                <i className="fa-regular fa-heart"></i>
-              </Link>
-              <Link to="/wish" className="wishlist-link">Wish Lists</Link>
-            </li>
-            <li className="header-account-icon">
-              <a href="/profile">
-                <i className="fa-regular fa-user"></i>
-              </a>
-              <div className="header-account-links">
-                <Link className="one" to="/login">Signin</Link>
-                <Link className="one" to="/register">Signup</Link>
+          <div className="header-account-icon">
+            <i className="fa-regular fa-user" onClick={toggleDropdown}></i>
+            {dropdownVisible && (
+              <div className="header-account-dropdown">
+                <Link to="/dashboard">Profile</Link>
+                
+                <Link to="/">Logout</Link>
               </div>
-            </li>
-            <li className="header-cart-icon">
-              <Link to="/cart">
-                <i className="fa-solid fa-cart-shopping"></i>
-              </Link>
-            </li>
-          </ul>
-        </nav>
+            )}
+          </div>
+        </div>
+        {!isCartPage }
       </header>
     </>
   );
 };
 
-// Combined WishPage Component
-const WishPage = () => {
-  const [hover, setHover] = useState(false);
-
-  const buttonStyle = {
-    backgroundColor: hover ? 'red' : 'white',
-    color: hover ? 'white' : 'black',
-    border: 'solid',
-    padding: '10px 20px',
-    cursor: 'pointer',
-    fontSize: '16px',
-  };
-
-  return (
-    <div className="page-container">
-      <Header />
-      <div className="content-wrap">
-        <div className="cart-title">Your Wishlist</div>
-        <h2 style={styles.heading}>Your Wishlist is Empty!</h2>
-        <button
-          style={buttonStyle}
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          onClick={() => window.location.href = '/shop'}
-        >
-          Continue Shopping
-        </button>
-      </div>
-      <Footer/>
-    </div>
-  );
-};
-
-const styles = {
-  heading: {
-    fontSize: '17px',
-    marginBottom: '20px',
-  },
-};
-
-export default WishPage;
+export default Header2;
