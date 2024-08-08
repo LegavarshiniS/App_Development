@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button, Form, Alert } from 'react-bootstrap';
-import profile from '../assets/images/profile.jpg'; // Ensure the correct path to your profile photo
+import profile from '../assets/images/profile.jpg';
 
 const EditProfile = () => {
   const [name, setName] = useState('Lega');

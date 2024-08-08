@@ -1,40 +1,7 @@
-// package com.project.toystore.model;
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.Id;
-
-// @Entity
-// public class Buy {
-//     @Id
-//     private int bid;
-//     private String address;
-
-//     public Buy() {
-//     }
-
-//     public Buy(int bid, String address) {
-//         this.bid = bid;
-//         this.address = address;
-//     }
-
-//     public int getBid() {
-//         return bid;
-//     }
-
-//     public void setBid(int bid) {
-//         this.bid = bid;
-//     }
-
-//     public String getAddress() {
-//         return address;
-//     }
-
-//     public void setAddress(String address) {
-//         this.address = address;
-//     }
-
-// }
 package com.project.toystore.model;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -123,8 +90,9 @@ public class Buy {
         this.state = state;
     }
     //product to buy
-   @OneToOne
+    @OneToOne
     @JsonBackReference
+     
     @JoinColumn(name = "product_id", referencedColumnName = "productId", nullable = false)
     private Product product;
 
@@ -139,6 +107,7 @@ public void setProduct(Product product) {
         // Buy to Payment relationship
         @OneToOne(mappedBy = "buy", cascade = CascadeType.ALL, orphanRemoval = true)
         @JsonManagedReference
+        @JsonIgnore
         private Payment payment;
     
         public Payment getPayment() {
@@ -147,5 +116,8 @@ public void setProduct(Product product) {
     
         public void setPayment(Payment payment) {
             this.payment = payment;
-        }   
+        }
+    
+
+    
 }

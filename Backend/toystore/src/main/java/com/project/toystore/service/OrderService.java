@@ -1,16 +1,17 @@
-package com.project.toystore.services;
+package com.project.toystore.service;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.toystore.model.Orders;
-import com.project.toystore.repository.OrdersRepo;
+import com.project.toystore.repository.OrderRepo;
 
 import java.util.List;
 @Service
-public class OrdersService {
+public class OrderService {
     @Autowired
-    OrdersRepo orderRepo;
+    OrderRepo orderRepo;
 
     public Orders create(Orders order) {
         return orderRepo.save(order);

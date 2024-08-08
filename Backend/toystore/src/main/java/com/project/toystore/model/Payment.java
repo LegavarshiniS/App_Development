@@ -1,79 +1,9 @@
-// package com.project.toystore.model;
-// import com.fasterxml.jackson.annotation.JsonBackReference;
-
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.Id;
-// import jakarta.persistence.JoinColumn;
-// import jakarta.persistence.OneToOne;
-
-
-// @Entity
-// public class Payment {
-//     @Id
-    
-//     private int paymentId;
-//     private String name;
-//     private String cardNumber;
-//     private int cvv;
-//     private String expiryDate;
-
-//     public int getPaymentId() {
-//         return paymentId;
-//     }
-
-//     public void setPaymentId(int paymentId) {
-//         this.paymentId = paymentId;
-//     }
-
-//     public String getName() {
-//         return name;
-//     }
-
-//     public void setName(String name) {
-//         this.name = name;
-//     }
-
-//     public String getCardNumber() {
-//         return cardNumber;
-//     }
-
-//     public void setCardNumber(String cardNumber) {
-//         this.cardNumber = cardNumber;
-//     }
-
-//     public int getCvv() {
-//         return cvv;
-//     }
-
-//     public void setCvv(int cvv) {
-//         this.cvv = cvv;
-//     }
-
-//     public String getExpiryDate() {
-//         return expiryDate;
-//     }
-
-//     public void setExpiryDate(String expiryDate) {
-//         this.expiryDate = expiryDate;
-//     }
-//      // Payment to Buy relationship
-//      @OneToOne
-//      @JsonBackReference
-//      @JoinColumn(name = "buy_aid", referencedColumnName = "aid", nullable = false)
-//      private Buy buy;
- 
-//      public Buy getBuy() {
-//          return buy;
-//      }
- 
-//      public void setBuy(Buy buy) {
-//          this.buy = buy;
-//      }
- 
-// }
 package com.project.toystore.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -145,6 +75,7 @@ public class Payment {
     @OneToOne
     @JsonBackReference
     @JoinColumn(name = "buy_aid", referencedColumnName = "aid", nullable = false)
+    
     private Buy buy;
 
     public Buy getBuy() {
@@ -154,5 +85,19 @@ public class Payment {
     public void setBuy(Buy buy) {
         this.buy = buy;
     }
+    ///payment to order
+    @OneToOne(mappedBy = "payment",cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    @JsonIgnore
+    private Orders orders;
+
+    public Orders getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Orders orders) {
+        this.orders = orders;
+    }
+
     
 }

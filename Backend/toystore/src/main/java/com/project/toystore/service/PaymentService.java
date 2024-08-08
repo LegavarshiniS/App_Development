@@ -1,28 +1,28 @@
-package com.project.toystore.services;
+package com.project.toystore.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.toystore.model.Payment;
-import com.project.toystore.repository.PaymentRepository;
+import com.project.toystore.repository.PaymentRepo;
 
 import java.util.List;
 
 @Service
 public class PaymentService {
     @Autowired
-    private PaymentRepository paymentRepo;
+    private PaymentRepo paymentRepository;
 
     public Payment create(Payment payment) {
-        return paymentRepo.save(payment);
+        return paymentRepository.save(payment);
     }
 
     public List<Payment> getAll() {
-        return paymentRepo.findAll();
+        return paymentRepository.findAll();
     }
 
     public Payment getById(int paymentId) {
-        return paymentRepo.findById(paymentId).orElse(null);
+        return paymentRepository.findById(paymentId).orElse(null);
     }
 
     public boolean update(int paymentId, Payment payment) {
@@ -30,7 +30,7 @@ public class PaymentService {
             return false;
         }
         try {
-            paymentRepo.save(payment);
+            paymentRepository.save(payment);
         } catch (Exception ex) {
             return false;
         }
@@ -41,7 +41,7 @@ public class PaymentService {
         if (this.getById(paymentId) == null) {
             return false;
         }
-        paymentRepo.deleteById(paymentId);
+        paymentRepository.deleteById(paymentId);
         return true;
     }
 }

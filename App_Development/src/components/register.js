@@ -1,51 +1,74 @@
 import { useState } from "react";
+import axios from "axios";
 import car from '../assets/images/car.jpg'; 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 const Register = () => {
+    const apiurl="http://127.0.0.1:8080/api/users/createUser"
+
     const [formData, setFormData] = useState({
-        name: '',
+        // name: '',
         email: '',
-        password: '',
-        confirmPassword: ''
+        password: ''
+        // confirmPassword: ''
     });
 
     const [error, setError] = useState({
-        name: "",
+        // name: "",
         email: "",
-        password: "",
-        confirmPassword: ""
+        password: ""
+        // confirmPassword: ""
     });
-
+    const navigate=useNavigate();
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
         setError({ ...error, [name]: "" });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const formErrors = {};
 
-        if (formData.name.trim() === "") {
-            formErrors.name = "Enter Name";
-        }
+        // if (formData.name.trim() === "") {
+        //     formErrors.name = "Enter Name";
+        // }
         if (formData.email.trim() === "") {
             formErrors.email = "Enter Email";
         }
         if (formData.password.trim() === "") {
             formErrors.password = "Enter Password";
         }
-        if (formData.confirmPassword.trim() === "") {
-            formErrors.confirmPassword = "Confirm Password";
-        } else if (formData.password !== formData.confirmPassword) {
-            formErrors.confirmPassword = "Passwords do not match";
-        }
+        // if (formData.confirmPassword.trim() === "") {
+        //     formErrors.confirmPassword = "Confirm Password";
+        // } else if (formData.password !== formData.confirmPassword) {
+        //     formErrors.confirmPassword = "Passwords do not match";
+        // }
 
         setError(formErrors);
         console.log(formData);
+
+        const newData= await axios
+        .post("http://127.0.0.1:8080/api/users/createUser",{
+            uid: 0,
+            email: formData.email,
+            password:formData.password,
+            // confirmPassword:formData.confirmPassword,
+            roles: "USER",
+        })
+        .then((response)=>{
+            console.log(response);
+        })
+        .catch((error)=>{
+            console.error(error);
+        });
+        if (Object.keys(formErrors).length === 0) {
+            console.log(formData);
+            navigate('/login'); 
+        }
+        
     };
 
-    // Inline styles
     const styles = {
         pageContainer: {
             position: 'relative',
@@ -120,8 +143,8 @@ const Register = () => {
         <div style={styles.pageContainer}>
             <div style={styles.container}>
                 <h1 style={styles.header}>Register</h1>
-                <form onSubmit={handleSubmit}>
-                    <label style={styles.label}>Name</label>
+                 <form onSubmit={handleSubmit}>
+                    {/* <label style={styles.label}>Name</label>
                     <input
                         type="text"
                         placeholder="Enter Name"
@@ -129,7 +152,7 @@ const Register = () => {
                         value={formData.name}
                         onChange={handleChange}
                         style={styles.input}
-                    />
+                    />  */}
                     {error.name && <p style={styles.error}>{error.name}</p>}
                     <label style={styles.label}>Email</label>
                     <input
@@ -150,7 +173,7 @@ const Register = () => {
                         onChange={handleChange}
                         style={styles.input}
                     />
-                    {error.password && <p style={styles.error}>{error.password}</p>}
+                    {/* {error.password && <p style={styles.error}>{error.password}</p>}
                     <label style={styles.label}>Confirm Password</label>
                     <input
                         type="password"
@@ -159,8 +182,8 @@ const Register = () => {
                         value={formData.confirmPassword}
                         onChange={handleChange}
                         style={styles.input}
-                    />
-                    {error.confirmPassword && <p style={styles.error}>{error.confirmPassword}</p>}
+                    /> */}
+                    {/* {error.confirmPassword && <p style={styles.error}>{error.confirmPassword}</p>} */}
                     <button type="submit" style={styles.button}>Register</button>
                 </form>
                 <Link to="/login" style={styles.link}>Already have an account? Sign in</Link>
